@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:56:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/22 23:13:30 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:06:52 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void		five_sort(t_push **a, t_push **b);
 int			ft_lstsize(t_push *lst);
 char		**ft_split(char const *s, char c);
 size_t		ft_strlen(const char *s);
-void		ft_error(void);
 void		check_arg(char *s);
 void		two_face(char **v, char **arg);
 void		ft_duplicate(char **arg);
@@ -65,9 +64,11 @@ void		pa(t_push **a, t_push **b);
 void		sb(t_push **s);
 void		rb(t_push **s);
 void		rrb(t_push **s);
-int	find_index(t_push **a, t_push **b, int start, int end);
-void	fast(t_push **a, t_push **b);
-void sort_stack_b(t_push **a, t_push **b);
-void oush(t_push **a, t_push **b, int j, int max);
-int partition1(t_push **a, int start,int end);
+int			find_index(t_push **a, t_push **b, int start, int end);
+void		fast(t_push **a, t_push **b);
+void		sort_stack_b(t_push **a, t_push **b);
+void		oush(t_push **a, t_push **b, int j);
+int			partition1(t_push **a, int start, int end);
+void 		sperate(t_push *a);
+void min_ins(t_push **a,t_push **b,int start,int end);
 #endif

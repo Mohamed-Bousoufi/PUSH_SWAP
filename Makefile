@@ -4,14 +4,14 @@ CC = cc
 CFLAGS = -Wall -Wextra  -Werror -g
 PUSH_SWAP_H = push_swap.h 
 FILES = first_step.c sort_utils.c utils_list.c utils_ins.c\
-			ft_split.c main.c long_sort.c
+			ft_split.c main.c long_sort.c random.c
 
 OBJS = $(FILES:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	  $(CC)  -o $(NAME) $^  -fsanitize=address,integer,undefined
+	  $(CC)  -o $(NAME) $^  #-fsanitize=address,integer,undefined
 
 %.o : %.c $(PUSH_SWAP_H)
 	$(CC) $(CFLAGS)  -c $< -o $@

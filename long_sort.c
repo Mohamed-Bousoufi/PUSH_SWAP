@@ -6,17 +6,36 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 22:27:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/22 23:13:04 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:48:23 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int partition1(t_push **a, int start,int end)
+void min_ins(t_push **a,t_push **b,int start,int end)
 {
-	t_push *tmp;
-	int j;
-	int l;
+	if((*a) && (*a)->index <= end && (*a)->index >= start)
+	{
+		if((*a)->index <= (start +end)/2)
+			pb(a,b);
+		else
+		{
+			pb(a,b);
+			rb(b);
+		}
+	}
+	else
+		ra(a);
+}
+
+
+
+int partition1(t_push **a, int start, int end)
+{
+	t_push	*tmp;
+	int		j;
+	int		l;
+
 	tmp = (*a);
 	j = 0;
 	l = -1;
@@ -31,10 +50,14 @@ int partition1(t_push **a, int start,int end)
 	}
 	return (l);
 }
+
 void dush(t_push **a, t_push **b, int end, int start, int i)
 {
-	int var = 0;
-	if (i < (ft_lstsize(*a) / 2))
+	int	var;
+
+	var = 0;
+
+	if (i <= (ft_lstsize(*a) / 2))
 	{
 		while (var < i)
 		{
@@ -50,46 +73,45 @@ void dush(t_push **a, t_push **b, int end, int start, int i)
 			var++;
 		}
 	}
-	if ((*a)->index >= (end+start) / 2)
+	if ((*a)->index > (end + start) / 2)
 	{
 		pb(a, b);
 	}
-	else if ((*a)->index < (end+start) / 2)
+	else if ((*a)->index <= (end + start) / 2)
 	{
 		pb(a, b);
 		rb(b);
 	}
 }
 
-int find_index(t_push **a, t_push **b, int start, int end)
+int	find_index(t_push **a, t_push **b, int start, int end)
 {
-	int i;
-	int q;
-	int size;
+	int		i;
 
 	i = 0;
-	q = start;
-	size = end;
-
-		i = partition1(a,start,end);
-		if (i == -1)
-				return (1);
-		dush(a, b, end, start, i);
+	i = partition1(a, start, end);
+	if (i == -1)
+		return (1);
+		dush(a, b, end, start,i);
 	return (0);
 }
 
-void fast(t_push **a, t_push **b)
+void	fast(t_push **a, t_push **b)
 {
-	int size = ft_lstsize(*a);
-	int start = 1;
-	int end = (size / 5);
-	int i = 0;
-	(void)b;
+	int		i;
+	int		end;
+	int		start;
+	int		size;
+
+	size = ft_lstsize(*a);
+	start = 1;
+	end = (size / 5);
+	i = 1;
 	while (start <= size)
 	{
-		while (i < size)
+		while (i <= size)
 		{
-			find_index(a, b, start, end);
+			min_ins(a,b,start,end);
 			i++;
 		}
 		i = 0;
@@ -97,39 +119,73 @@ void fast(t_push **a, t_push **b)
 		end += (size / 5);
 	}
 }
+int get_it(t_push **a,int max)
+{
+	int i = 0;
+	t_push *tmp;
+	tmp = (*a);
+	while(tmp)
+	{
+		if(tmp->index == max)
+		{
+			return(i);
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	return(-1);
+}
 void sort_stack_b(t_push **a, t_push **b)
 {
-	t_push *tmp;
-	int max;
-	int j;
-	int i;
 	(void)a;
+	int size;
+	int max;
+	int i;
 	i = 0;
-	j = 0;
+	t_push *tmp;
 	tmp = (*b);
+	size = ft_lstsize(*b);
 	max = ft_lstsize(*b);
-	while (max)
+	while(size)
 	{
-		tmp = (*b);
-		while (tmp)
+		if(tmp->index == max)
 		{
-			if (tmp->index == max)
-			{
-				oush(a, b, j, max);
-			}
-			tmp = tmp->next;
-			j++;
+			pa(a,b);
+			tmp = (*b);
+			max--;
 		}
-		j = 0;
-		max--;
+		 if(tmp->index == max - 1)
+		{
+			pa(a,b);
+			tmp = (*b);
+		}
+		if(ft_lstlast(tmp)->index == max)
+		{
+			rrb(b);
+			tmp = (*b);
+			max--;
+		}
+		 if(ft_lstlast(tmp)->index == max - 1)
+		{
+			rrb(b);
+			pa(a,b);
+			tmp = (*b);
+		}
+		else
+		{
+			rb(b);
+			tmp = (*b);
+		}
+		size--;
+		// printf("%d\n",ft_lstlast(tmp)->val);
 	}
 }
 
-void oush(t_push **a, t_push **b, int j, int max)
+void	oush(t_push **a, t_push **b, int j)
 {
-	int size;
-	int indx;
-	(void)max;
+	int	size;
+	int	indx;
+
 	size = ft_lstsize(*b);
 	indx = size - j;
 	if (size - j <= size / 2)

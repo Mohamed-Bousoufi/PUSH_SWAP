@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:53:07 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/22 15:54:30 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:57:43 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	sa(t_push **s)
 		(*s)->next = temp;
 		puts("sa");
 	}
-	else
-		write(2, "Error\n", 7);
 }
 
 void	sb(t_push **s)

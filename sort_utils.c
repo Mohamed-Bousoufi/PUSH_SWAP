@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:09:31 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/18 12:56:37 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:14:09 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ void	four_sort(t_push **a)
 	t_push	*b;
 
 	b = NULL;
-	while ((*a)->index != 0)
+	while ((*a)->index != 1)
 		rra(a);
 	pb(a, &b);
 	three_sort(a);
 	pa(a, &b);
-	ra(a);
 }
 
 void	five_sort(t_push **a, t_push **b)
@@ -61,25 +60,23 @@ void	five_sort(t_push **a, t_push **b)
 
 	i = 0;
 	tmp = (*a);
-	while (tmp->index != 0)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	rotate(a, b, 0, i);
-	i = 0;
-	tmp = (*a);
 	while (tmp->index != 1)
 	{
 		i++;
 		tmp = tmp->next;
 	}
 	rotate(a, b, 1, i);
+	i = 0;
+	tmp = (*a);
+	while (tmp->index != 2)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	rotate(a, b, 2, i);
 	three_sort(a);
 	pa(a, b);
-	ra(a);
 	pa(a, b);
-	ra(a);
 }
 
 void	rotate(t_push **a, t_push **b, int index, int nins)
@@ -109,13 +106,17 @@ int	check_sort(t_push *a)
 			return (0);
 		tmp = tmp->next;
 	}
+	if (a->index != 1)
+		return(0);
 	return (1);
 }
 
 void	short_sort(t_push **a, t_push **b)
 {
 	if (check_sort(*a))
+	{
 		exit(0);
+	}
 	if (ft_lstsize(*a) == 2)
 	{
 		if ((*a)->index == 0)
@@ -127,4 +128,7 @@ void	short_sort(t_push **a, t_push **b)
 		four_sort(a);
 	if (ft_lstsize(*a) == 5)
 		five_sort(a, b);
+	if(ft_lstsize(*a) > 5)
+		fast(a,b);
+		sort_stack_b(a,b);
 }

@@ -6,22 +6,25 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:27:18 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/22 23:17:11 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:09:33 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_push *prev, t_push *nxt)
+void	initailize_list(t_push **lst)
 {
-	int	tmp;
+	t_push	*tmp;
 
-	tmp = prev->val;
-	prev->val = nxt->val;
-	nxt->val = tmp;
+	tmp = (*lst);
+	while (tmp)
+	{
+		tmp->index = -1;
+		tmp = tmp->next;
+	}
 }
 
-void	indx (t_push **lst)
+void	indx(t_push **lst)
 {
 	int		flag;
 	t_push	*tmp;
@@ -29,12 +32,8 @@ void	indx (t_push **lst)
 	int		i;
 
 	flag = 1;
+	initailize_list(lst);
 	tmp = (*lst);
-	while (tmp)
-	{
-		tmp->index = -1;
-		tmp = tmp->next;
-	}
 	i = ft_lstsize(*lst);
 	while (flag)
 	{
@@ -53,10 +52,11 @@ void	indx (t_push **lst)
 		max && (max->index = i--);
 	}
 }
-void dpl(t_push **a)
+
+void	dpl(t_push **a)
 {
-	t_push *b;
-	t_push *c;
+	t_push		*b;
+	t_push		*c;
 
 	b = (*a);
 	while (b)
@@ -66,7 +66,7 @@ void dpl(t_push **a)
 		{
 			if (b->val == c->next->val)
 			{
-				puts("error");
+				write(2, "Error\n", 7);
 				exit(1);
 			}
 			c = c->next;
@@ -75,13 +75,13 @@ void dpl(t_push **a)
 	}
 }
 
-void make_list(char **argv, t_push **a)
+void	make_list(char **argv, t_push **a)
 {
-	t_push *t_push;
-	char **argz;
-	char **tmp;
-	int i;
-	int j;
+	t_push	*t_push;
+	char	**argz;
+	char	**tmp;
+	int		i;
+	int		j;
 
 	t_push = NULL;
 	i = 1;
@@ -103,12 +103,12 @@ void make_list(char **argv, t_push **a)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_push *a;
-	t_push *b;
-
+	t_push	*a;
+	t_push	*b;
 	int		i;
+
 	i = 0;
 
 	(void)argc;
@@ -117,16 +117,10 @@ int main(int argc, char **argv)
 	make_list(argv, &a);
 	dpl(&a);
 	indx(&a);
-	fast(&a,&b);
-	sort_stack_b(&a,&b);
-	// while (b != NULL)
+	short_sort(&a, &b);
+	// while (a != NULL)
 	// {
-	// 	printf("%d||-->>||%d\n",b->val, b->index);
-	// 	b = b->next;
+	// 	printf("%d||-->>||%d\n",a->val, a->index);
+	// 	a = a->next;
 	// }
-	while (a != NULL)
-	{
-		printf("%d||-->>||%d\n",a->val, a->index);
-		a = a->next;
-	}
 }
