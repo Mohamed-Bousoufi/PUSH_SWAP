@@ -6,21 +6,33 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:27:18 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/25 13:09:33 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:45:38 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initailize_list(t_push **lst)
+void	short_sort(t_push **a, t_push **b)
 {
-	t_push	*tmp;
-
-	tmp = (*lst);
-	while (tmp)
+	if (check_sort(*a))
 	{
-		tmp->index = -1;
-		tmp = tmp->next;
+		exit(0);
+	}
+	if (ft_lstsize(*a) == 2)
+	{
+		if ((*a)->index != 1)
+			sa(a);
+	}
+	if (ft_lstsize(*a) == 3)
+		three_sort(a);
+	if (ft_lstsize(*a) == 4)
+		four_sort(a);
+	if (ft_lstsize(*a) == 5)
+		five_sort(a, b);
+	if (ft_lstsize(*a) > 5)
+	{
+		hundred(a, b);
+		sort_stack_b(a, b);
 	}
 }
 
@@ -33,7 +45,6 @@ void	indx(t_push **lst)
 
 	flag = 1;
 	initailize_list(lst);
-	tmp = (*lst);
 	i = ft_lstsize(*lst);
 	while (flag)
 	{
@@ -87,16 +98,17 @@ void	make_list(char **argv, t_push **a)
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
+		j = -1;
 		check_arg(argv[i]);
 		argz = ft_split(argv[i], ' ');
 		tmp = argz;
-		while (argz[j])
+		while (argz[++j])
 		{
+			if (ft_strlen(argz[j]) > 11)
+				ft_error();
 			t_push = ft_lstnew(check_taille(ft_atoi(argz[j])));
 			free(tmp[j]);
 			ft_lstadd_back(a, t_push);
-			j++;
 		}
 		free(tmp);
 		i++;
@@ -107,20 +119,17 @@ int	main(int argc, char **argv)
 {
 	t_push	*a;
 	t_push	*b;
-	int		i;
 
-	i = 0;
-
-	(void)argc;
-	a = NULL;
-	b = NULL;
-	make_list(argv, &a);
-	dpl(&a);
-	indx(&a);
-	short_sort(&a, &b);
-	// while (a != NULL)
-	// {
-	// 	printf("%d||-->>||%d\n",a->val, a->index);
-	// 	a = a->next;
-	// }
+	if (argc > 1)
+	{
+		(void)argc;
+		a = NULL;
+		b = NULL;
+		make_list(argv, &a);
+		dpl(&a);
+		indx(&a);
+		short_sort(&a, &b);
+	}
+	else
+		exit(0);
 }

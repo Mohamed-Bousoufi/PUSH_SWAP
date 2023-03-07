@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:56:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/25 13:06:52 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:28:48 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,11 @@ typedef struct s_push
 
 }t_push;
 
-typedef struct s_mem
-{
-	char			**mem;
-	struct s_mem	*next;
-}t_mem;
-
 t_push		*ft_lstnew(int val);
 t_push		*ft_lstlast(t_push *lst);
 void		ft_lstadd_back(t_push **lst, t_push *new);
 size_t		ft_strlen(const char *s);
-int			ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 void		ft_error(void);
 void		check_arg(char *s);
 void		sa(t_push **s);
@@ -51,24 +45,21 @@ int			ft_lstsize(t_push *lst);
 char		**ft_split(char const *s, char c);
 size_t		ft_strlen(const char *s);
 void		check_arg(char *s);
-void		two_face(char **v, char **arg);
-void		ft_duplicate(char **arg);
-int			check_taille(long long n);
+int			check_taille(long n);
 void		four_sort(t_push **a);
 void		rotate(t_push **a, t_push **b, int size, int index);
 void		make_list(char **argv, t_push **a);
 void		short_sort(t_push **a, t_push **b);
 int			check_sort(t_push *a);
-void		*my_malloc(int size, t_mem **mem);
 void		pa(t_push **a, t_push **b);
 void		sb(t_push **s);
 void		rb(t_push **s);
 void		rrb(t_push **s);
-int			find_index(t_push **a, t_push **b, int start, int end);
-void		fast(t_push **a, t_push **b);
+void		hundred(t_push **a, t_push **b);
 void		sort_stack_b(t_push **a, t_push **b);
-void		oush(t_push **a, t_push **b, int j);
-int			partition1(t_push **a, int start, int end);
-void 		sperate(t_push *a);
-void min_ins(t_push **a,t_push **b,int start,int end);
+void		oush(t_push **b, int j);
+void		min_ins(t_push **a, t_push **b, int start, int end);
+int			get_it(t_push **a, int max);
+void		initailize_list(t_push **lst);
+int			maxval(t_push **a);
 #endif

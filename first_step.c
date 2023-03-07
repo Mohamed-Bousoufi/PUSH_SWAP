@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 21:09:10 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/17 22:30:40 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:26:14 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int			signe;
 	long long	res;
@@ -48,7 +48,7 @@ int	ft_atoi(const char *str)
 
 void	ft_error(void)
 {
-	write(2, "Error\n", 7);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -93,11 +93,4 @@ void	check_arg(char *s)
 	}
 	if (var > 0 || sp == 0)
 		ft_error();
-}
-
-int	check_taille(long long n)
-{
-	if (n < -2147483648 || n > 2147483647)
-		ft_error();
-	return ((int)n);
 }

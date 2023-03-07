@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:09:31 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/02/25 18:14:09 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:14:31 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ void	three_sort(t_push **lst)
 	if ((*lst)->val > (*lst)->next->val
 		&& (*lst)->next->val < (*lst)->next->next->val)
 	{
-		if ((*lst)->val < (*lst)->next->next->val) /*2 1 3*/
+		if ((*lst)->val < (*lst)->next->next->val)
 			sa(lst);
-		if ((*lst)->val > (*lst)->next->next->val) /*3 1 2*/
+		if ((*lst)->val > (*lst)->next->next->val)
 			ra(lst);
 	}
 	else if ((*lst)->val > (*lst)->next->val
-		&& (*lst)->next->val > (*lst)->next->next->val) /*3 2 1*/
+		&& (*lst)->next->val > (*lst)->next->next->val)
 	{
 		sa(lst);
 		rra(lst);
 	}
 	else if ((*lst)->val < (*lst)->next->val
 		&& (*lst)->next->val > (*lst)->next->next->val
-		&& (*lst)->val > (*lst)->next->next->val) /*2 3 1*/
+		&& (*lst)->val > (*lst)->next->next->val)
 		rra(lst);
 	else if ((*lst)->val < (*lst)->next->val
 		&& (*lst)->next->val > (*lst)->next->next->val
-		&& (*lst)->val < (*lst)->next->next->val) /*1 3 2*/
+		&& (*lst)->val < (*lst)->next->next->val)
 	{
 		rra(lst);
 		sa(lst);
@@ -107,28 +107,6 @@ int	check_sort(t_push *a)
 		tmp = tmp->next;
 	}
 	if (a->index != 1)
-		return(0);
+		return (0);
 	return (1);
-}
-
-void	short_sort(t_push **a, t_push **b)
-{
-	if (check_sort(*a))
-	{
-		exit(0);
-	}
-	if (ft_lstsize(*a) == 2)
-	{
-		if ((*a)->index == 0)
-			sa(a);
-	}
-	if (ft_lstsize(*a) == 3)
-		three_sort(a);
-	if (ft_lstsize(*a) == 4)
-		four_sort(a);
-	if (ft_lstsize(*a) == 5)
-		five_sort(a, b);
-	if(ft_lstsize(*a) > 5)
-		fast(a,b);
-		sort_stack_b(a,b);
 }
