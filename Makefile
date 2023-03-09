@@ -4,7 +4,8 @@ CC = cc
 CFLAGS = -Wall -Wextra  -Werror 
 PUSH_SWAP_H = push_swap.h 
 FILES = first_step.c sort_utils.c utils_list.c utils_ins.c\
-			ft_split.c main.c long_sort.c extra_one.c extra_ins.c
+			ft_split.c main.c long_sort.c extra_one.c extra_ins.c\
+			extra_sort.c
 
 OBJS = $(FILES:.c=.o)
 

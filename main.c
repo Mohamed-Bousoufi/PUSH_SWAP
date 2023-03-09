@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:27:18 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/07 16:45:38 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:36:38 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 
 void	short_sort(t_push **a, t_push **b)
 {
-	if (check_sort(*a))
-	{
-		exit(0);
-	}
 	if (ft_lstsize(*a) == 2)
 	{
 		if ((*a)->index != 1)
 			sa(a);
 	}
-	if (ft_lstsize(*a) == 3)
+	else if (ft_lstsize(*a) == 3)
 		three_sort(a);
-	if (ft_lstsize(*a) == 4)
+	else if (ft_lstsize(*a) == 4)
 		four_sort(a);
-	if (ft_lstsize(*a) == 5)
+	else if (ft_lstsize(*a) == 5)
 		five_sort(a, b);
-	if (ft_lstsize(*a) > 5)
+	else if ((ft_lstsize(*a) <= 100 && ft_lstsize(*a) > 5)
+		|| ft_lstsize(*a) > 500)
 	{
-		hundred(a, b);
+		pusha_b(a, b);
 		sort_stack_b(a, b);
+		exit(0);
+	}
+	else if (ft_lstsize(*a) == 500)
+	{
+		pusha_b(a, b);
+		five_hundred(a, b);
+		exit(0);
 	}
 }
 
@@ -122,12 +126,13 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		(void)argc;
 		a = NULL;
 		b = NULL;
 		make_list(argv, &a);
 		dpl(&a);
 		indx(&a);
+		if (check_sort(a))
+			exit(0);
 		short_sort(&a, &b);
 	}
 	else

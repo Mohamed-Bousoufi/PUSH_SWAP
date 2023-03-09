@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:56:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/06 17:28:48 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/09 22:36:52 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ void		pa(t_push **a, t_push **b);
 void		sb(t_push **s);
 void		rb(t_push **s);
 void		rrb(t_push **s);
-void		hundred(t_push **a, t_push **b);
+void		pusha_b(t_push **a, t_push **b);
 void		sort_stack_b(t_push **a, t_push **b);
 void		oush(t_push **b, int j);
 void		min_ins(t_push **a, t_push **b, int start, int end);
 int			get_it(t_push **a, int max);
 void		initailize_list(t_push **lst);
 int			maxval(t_push **a);
+void		five_hundred(t_push **a, t_push **b);
+int			count(t_push **a, int max);
 #endif

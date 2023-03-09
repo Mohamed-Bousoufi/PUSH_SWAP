@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 22:27:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/07 17:46:26 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:15:25 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	min_ins(t_push **a, t_push **b, int start, int end)
 {
 	if ((*a) && (*a)->index <= end && (*a)->index >= start)
 	{
-		if ((*a)->index <= (start + end) / 2)
+		if ((*a)->index <= ((start + end) / 2) + 1)
 			pb(a, b);
 		else
 		{
@@ -28,29 +28,24 @@ void	min_ins(t_push **a, t_push **b, int start, int end)
 		ra(a);
 }
 
-void	hundred(t_push **a, t_push **b)
+void	pusha_b(t_push **a, t_push **b)
 {
 	int	end;
 	int	start;
-	int	i;
 	int	size;
 	int	inc;
 
 	start = 0;
 	end = 0;
 	size = ft_lstsize(*a);
-	i = 0;
-	if (ft_lstsize(*a) > 100)
+	if (size > 100)
 		inc = size / 9;
 	else
 		inc = size / 4;
 	while (start < size)
 	{
-		while (i < end)
-		{
+		while (ft_lstsize(*b) < end)
 			min_ins(a, b, start, end);
-				i = ft_lstsize(*b);
-		}
 			start = end;
 		if (end + inc >= size)
 			end = size;

@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:09:31 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/05 16:14:31 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:19:38 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ int	check_sort(t_push *a)
 	tmp = a;
 	while (tmp->next != NULL)
 	{
-		if (tmp->index < tmp->next->index)
+		if (tmp->index > tmp->next->index)
+		{
 			return (0);
+		}
 		tmp = tmp->next;
 	}
 	if (a->index != 1)

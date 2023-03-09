@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:32 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/07 16:37:31 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:41:43 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	initailize_list(t_push **lst)
 
 int	check_taille(long n)
 {
-	if (n < -2147483648 || n >= 2147483647)
+	if (n < -2147483648 || n > 2147483647)
 	{
 		ft_error();
 	}

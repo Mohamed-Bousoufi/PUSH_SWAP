@@ -5,6 +5,13 @@
         "algorithm": "c",
         "random": "c",
         "push_swap.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "__bit_reference": "c",
+        "__threading_support": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "set": "c",
+        "unordered_map": "c",
+        "unordered_set": "c"
     }
 }
