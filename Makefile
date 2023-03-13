@@ -1,11 +1,11 @@
 
 NAME = push_swap
-NAME_BONUS = my_checker
+NAME_BONUS = checker
 CC = cc 
 CFLAGS = -Wall -Wextra  -Werror 
 PUSH_SWAP_H = push_swap.h 
 
-PUSH_SWAP_BONUS_H = push_swap_bonus.h 
+PUSH_SWAP_BONUS_H = bonus/push_swap_bonus.h 
 
 FILES = first_step.c sort_utils.c utils_list.c utils_ins.c\
 			ft_split.c main.c long_sort.c extra_one.c extra_ins.c\
@@ -31,8 +31,7 @@ $(NAME) : $(OBJS)
 	  $(CC)  -o $(NAME) $^
 
 %.o : %.c $(PUSH_SWAP_H) $(PUSH_SWAP_BONUS_H)
-	$(CC) $(CFLAGS)  -c $< -o $@ 
-
+	$(CC) $(CFLAGS)  -c $< -o $@
 clean :
 	rm -rf $(OBJS) $(OBJS_BONUS)
 
