@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 22:27:23 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/09 16:15:25 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:25:28 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	min_ins(t_push **a, t_push **b, int start, int end)
 {
 	if ((*a) && (*a)->index <= end && (*a)->index >= start)
 	{
-		if ((*a)->index <= ((start + end) / 2) + 1)
+		if ((*a)->index <= (start + end) / 2)
 			pb(a, b);
 		else
 		{

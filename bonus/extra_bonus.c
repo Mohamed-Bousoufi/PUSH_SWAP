@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extra_one.c                                        :+:      :+:    :+:   */
+/*   extra_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 17:18:32 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/10 19:14:07 by mbousouf         ###   ########.fr       */
+/*   Created: 2023/03/10 16:10:38 by mbousouf          #+#    #+#             */
+/*   Updated: 2023/03/12 21:31:27 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	initailize_list(t_push **lst)
 {
@@ -31,58 +31,4 @@ int	check_taille(long n)
 		ft_error();
 	}
 	return ((int)n);
-}
-
-int	maxval(t_push **a)
-{
-	t_push	*tmp;
-	int		max;
-
-	max = 0;
-	if (*a)
-	{
-		tmp = (*a);
-		max = tmp->index;
-		while (tmp)
-		{
-			if (tmp->index > max)
-			{
-				max = tmp->index;
-			}
-			tmp = tmp->next;
-		}
-	}
-	return (max);
-}
-
-int	get_it(t_push **a, int max)
-{
-	int		i;
-	t_push	*tmp;
-
-	tmp = (*a);
-	i = 0;
-	while (tmp)
-	{
-		if (tmp->index == max)
-		{
-			return (i);
-		}
-		tmp = tmp->next;
-		i++;
-	}
-	return (-1);
-}
-
-void	free_stack(t_push *a)
-{
-	t_push	*tmp;
-
-	tmp = a;
-	while (tmp)
-	{
-		free(tmp);
-		tmp = tmp->next;
-	}
-	free(tmp);
 }

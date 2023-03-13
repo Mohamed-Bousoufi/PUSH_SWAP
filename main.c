@@ -6,7 +6,7 @@
 /*   By: mbousouf <mbousouf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:27:18 by mbousouf          #+#    #+#             */
-/*   Updated: 2023/03/09 22:36:38 by mbousouf         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:40:43 by mbousouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int	main(int argc, char **argv)
 		if (check_sort(a))
 			exit(0);
 		short_sort(&a, &b);
+		free_stack(a);
 	}
 	else
 		exit(0);
